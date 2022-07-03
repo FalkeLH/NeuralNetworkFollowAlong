@@ -1,15 +1,20 @@
 fn main() {
-    let inputs = vec![1., 2., 3., 4.];
-    let weights = vec![0.2, 0.8, -0.5, 0.9];
-    let bias = 2.;
-    
-    let mut output = 0.;
-    inputs
-        .into_iter()
-        .zip(weights)
-        .map(|(i, w)| i * w)
-        .for_each(|e| output += e);
-    let output = output + bias;
+    let inputs = vec![1., 2., 3., 2.5];
+    let weights = vec![
+        vec![0.2, 0.8, -0.5, 1.],
+        vec![0.5, -0.91, 0.26, -0.5],
+        vec![-0.26, -0.27, 0.17, 0.87],
+    ];
+    let bias = vec![2., 3., 0.5];
 
-    println!("{}", output);
+    assert_eq!(weights.len(), bias.len());
+    let mut output: Vec<f64> = vec![0.; weights.len()];
+    for i in 0..weights.len() {
+        for j in 0..weights[i].len() {
+            output[i] += inputs[j] * weights[i][j];
+        }
+        output[i] += bias[i]
+    }
+
+    println!("{:?}", output);
 }
