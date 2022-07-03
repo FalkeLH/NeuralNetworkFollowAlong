@@ -1,4 +1,5 @@
 fn main() {
+    // Fetch basic inputs, weights and biases
     let inputs = vec![1., 2., 3., 2.5];
     let weights = vec![
         vec![0.2, 0.8, -0.5, 1.],
@@ -7,6 +8,7 @@ fn main() {
     ];
     let bias = vec![2., 3., 0.5];
 
+    // Make sure there are an equal amount of biases and weights. Calculate the final output as well
     assert_eq!(weights.len(), bias.len());
     let mut output: Vec<f64> = vec![0.; weights.len()];
     for i in 0..weights.len() {
