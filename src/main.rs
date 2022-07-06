@@ -25,8 +25,7 @@ fn main() {
     let layer1_output = calc_output(&x, &weights, &bias);
     let layer2_output = calc_output(&layer1_output, &weights2, &bias2);
 
-    println!("{:?}", layer1_output);
-    println!("{:?}", layer2_output);
+    println!("{:#?}", layer2_output);
 }
 
 fn calc_output<'a>(
